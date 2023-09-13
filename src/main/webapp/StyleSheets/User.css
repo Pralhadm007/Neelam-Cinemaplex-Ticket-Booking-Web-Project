@@ -1,0 +1,173 @@
+@charset "ISO-8859-1";
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    color: aliceblue;
+}
+
+.NavHead {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 60px;
+    width: 100vw;
+    color: aliceblue;
+    background-color: rgb(127, 31, 31);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavHead .logo {
+    /* position: fixed; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    font-size: 25px;
+    font-weight: 800;
+    text-shadow: 10px 10px 10px black;
+}
+
+.NavHead .NavBtn {
+    margin: 5vw;
+}
+.NavHead span{
+    width: max-content;
+}
+.NavHead button {
+    background-color: transparent;
+    border: none;
+    color: aliceblue;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.NavHead button:hover {
+    color: aqua;
+    /* font-size: 20px; */
+    /* transform: scale(1.05); */
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    width: 100vw;
+    margin-top: 60px;
+}
+
+.SideBar {
+    position: fixed;
+    height: 100vh;
+    width: 20vw;
+    /* background-color: yellow; */
+    box-shadow: 3px 3px 10px gainsboro;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.PosterWall {
+    height: max-content;
+    margin-left: 20vw;
+    width: 80vw;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.MoviePoster {
+    height: 320px;
+    width: 250px;
+    margin: 30px;
+    /* padding: 5px; */
+    color: aliceblue;
+}
+.MoviePoster img {
+    height: 280px;
+    width: 240px;
+    box-shadow: 2px 2px 10px white;
+}
+.MoviePoster #MovieTitle {
+    margin-top: 5px;
+    font-size: 25px;
+}
+.SideBar span{
+    width: 100%;
+    height: 25px;
+    margin-top: 40px;
+}
+.SideBar button{
+    border: none;
+    background-color: transparent;
+    color: aliceblue;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+}
+.SideBar button:hover{
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.AlHiddenDv{
+    display: none; 
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    /* background-color: blue; */
+}
+.TodayShow,.AvlSeat,.Screen,.BookingForm{
+color: aliceblue;
+margin: 15% 10%;
+background-color: black;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th,td{
+    border: 2px solid whitesmoke;
+    height: 40px;
+    width: 100px;
+}
+.BookingForm{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+   width: 400px;
+   border-radius: 10px;
+   margin: 12% 35%;
+
+}
+.BookingForm table,td{
+    border: none;
+    width: 100%;
+    /* text-align: left; */
+}
+.BookingForm select{
+    width:200px;
+    height:20px;
+    border-radius: 5px;
+}
+.BookingForm input,button{
+    border-radius: 5px;
+    margin: 10px;
+}
+.BookingForm button:hover{
+    transform: scale(1.3);
+}
+ 

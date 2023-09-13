@@ -1,0 +1,140 @@
+@charset "ISO-8859-1";
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+.NavHead {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 60px;
+    width: 100vw;
+    color: aliceblue;
+    background-color: rgb(127, 31, 31);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavHead .logo {
+    /* position: fixed; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    font-size: 25px;
+    font-weight: 800;
+    text-shadow: 10px 10px 10px black;
+}
+
+.NavHead .NavBtn {
+    margin: 5vw;
+}
+.NavHead span{
+    width: max-content;
+}
+.NavHead button {
+    background-color: transparent;
+    border: none;
+    color: aliceblue;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.NavHead button:hover {
+    color: aqua;
+    cursor: pointer;
+}
+.MainContainer{
+    height: calc(100% - 60px);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.Container{
+    color: aliceblue;
+    height: 100%;
+    width: 90%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.Container span{
+    margin: 35px;
+    
+}
+.Container button{
+    background-color: transparent;
+    color: aliceblue;
+    border: none;
+    font-size: 25px;
+    width: fit-content; 
+}
+.seperator{
+    height: 1px;
+    width: 300px;
+    box-shadow: 5px 5px 10px aliceblue;
+    background-color: aliceblue;
+}
+.Container button:hover{
+    cursor: pointer;
+    font-size: 27px;
+    /* background-color: aqua; */
+}
+.TableContainer{
+    width: 10%;
+    height: 100%;
+   
+
+}
+.addMovie,.SchShows,.DelMvDiv{
+    display: none;
+    position: fixed;
+    top: 100px;
+    left: 25vw;
+    width: 75vw;
+    height: calc(100% - 100px);
+    /* background-color: rgba(75, 224, 187, 0.7); */
+    z-index: 1;
+}
+.AddMovieForm{
+    margin: 3% 20%;
+    padding: 20px;
+    height: 500px;
+    width: 400px;
+    border-radius: 15px;
+    background-color:black;
+    color: aliceblue;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    row-gap: 10px;
+}
+.AddMovieForm input,button{
+    margin-top: 5px;
+    height: 30px;
+    width:350px;
+    border-radius: 10px;
+    text-align: center;
+}
+	
+.AddMovieForm button{
+    background-color: aqua;
+}
+.AddMovieForm button:hover{
+    background-color:  rgb(127, 31, 31);
+    cursor:pointer;
+}
+
+
+ 
