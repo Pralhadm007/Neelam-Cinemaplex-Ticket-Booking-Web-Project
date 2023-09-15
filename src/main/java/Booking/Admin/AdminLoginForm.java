@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.protocol.Resultset;
 
@@ -43,6 +44,11 @@ public class AdminLoginForm extends HttpServlet
 			{
 				out.print("<script>alert('You are Successfully Logged')</script");
 				RequestDispatcher rd = req.getRequestDispatcher("/Admin.jsp");
+				HttpSession session = req.getSession();
+				session.setAttribute("AdminName", AdminName);
+				resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+				resp.setHeader("Pragma", "no-cache"); 
+				resp.setHeader("Expires", "0"); 
 				rd.include(req, resp);
 			}
 			else

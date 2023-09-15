@@ -42,9 +42,6 @@ public class UserLoginForm extends HttpServlet
 			pr.setString(2, UserEmail);
 			pr.setString(3, UserPass);
 			
-			session.setAttribute(UserName, UserName);
-			session.setAttribute(UserEmail, UserEmail);
-			
 			ResultSet rs = pr.executeQuery();
 			
 			if(rs.next())
@@ -52,6 +49,14 @@ public class UserLoginForm extends HttpServlet
 				
 				out.print("<script>alert('Successfully Logged In')</script>");
 				RequestDispatcher rd = req.getRequestDispatcher("/User.jsp");
+
+				session.setAttribute("UserName", UserName);
+				session.setAttribute("UserEmail", UserEmail);
+				
+				resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+				resp.setHeader("Pragma", "no-cache"); 
+				resp.setHeader("Expires", "0"); 
+				
 				rd.include(req, resp);
 			}
 			else

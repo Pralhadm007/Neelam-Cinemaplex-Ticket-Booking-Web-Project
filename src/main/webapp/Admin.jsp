@@ -10,26 +10,16 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
  <link rel="stylesheet" href="StyleSheets/Admin.css">
- <style>
- #ShowMvDiv{overflow-x: scroll;}
- 
- 		table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid aliceblue;
-      color:aliceblue;
-      overflow: auto;
-    }
-		td, th {
-	  width: max-content;
-      padding: 8px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
- </style>
+ <link rel="stylesheet" href="StyleSheets/Admin2.css">
 </head>
 <body>
+	
 	<%
+           	 	if(session.getAttribute("AdminName")==null)
+           	 		response.sendRedirect("index.jsp");
+     %>
+	
+	<%		
 			response.setContentType("text/html");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/movieshowdb","root","root");
@@ -43,7 +33,9 @@
         <span class="logo">Neelam Cineplex, Jalna</span>
         <span class="NavBtn">
             <span>
-                <button>Log-Out</button>
+                <form action="AdminLogOut" method= "post">
+                <button id="">Log-Out</button>
+                </form>
             </span>
             <span>
                 <button>Help</button>
@@ -139,21 +131,9 @@
             </div>
     </div>
     <script src="scripts/Admin.js"></script>
+    <script src="scripts/Admin2.js"></script>
     <script type="text/javascript">
-    	//for Show Movie Detail
-		/*const ShowMvBtn = document.getElementById('ShowMvBtn');*/
-		const ShowMvDiv1 = document.getElementById('ShowMvDiv');
-		/*const HideMvDiv = document.getElementById('HideMvDiv');*/
-		function ShowMvDetailFunc(){
-			Shift();
-			ShowMvDiv1.style.display = 'block';
-			HideSchFunct();
-      		HideAddMVFunc();
-       		HideDelFunc();
-		};
-		function HideMvDetailFunction(){
-			ShowMvDiv1.style.display = 'none';
-		};
+    	
 	</script>
     </body>
 </html>

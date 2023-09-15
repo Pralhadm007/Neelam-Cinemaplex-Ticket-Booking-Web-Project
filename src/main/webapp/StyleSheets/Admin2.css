@@ -1,0 +1,15 @@
+#ShowMvDiv{overflow-x: scroll;}
+ 
+ 		table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid aliceblue;
+      color:aliceblue;
+      overflow: auto;
+    }
+		td, th {
+	  width: max-content;
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
