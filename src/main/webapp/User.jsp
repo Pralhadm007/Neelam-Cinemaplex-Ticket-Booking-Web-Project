@@ -28,11 +28,12 @@
 
 <body>
 
-<%-- 	<%
+ 	<%
 			if(session.getAttribute("UserName")==null)
 				response.sendRedirect("index.jsp");
-	%> --%>	
-	<%List<MovieDetail> movieDetail = (List<MovieDetail>)request.getAttribute("Movies");%>
+		
+	List<MovieDetail> movieDetail = (List<MovieDetail>)request.getAttribute("Movies");
+	%>
 	
     <div class="NavHead">
         <span class="logo">Neelam Cineplex, Jalna</span>
@@ -63,7 +64,7 @@
             </span>
         	<span class="profilspan" id="profilspan">
     		<p>Name : <%= session.getAttribute("UserName") %></p>
-    		<p>Email : <br><%= session.getAttribute("UserEmail") %></p>
+    		<p>Email : <%= session.getAttribute("UserEmail") %></p>
         	</span>
             <span>
                 <button id="showTdBtn">Shows For Today</button>
@@ -279,10 +280,12 @@
             <table>
                 <tr><th>Movie Title</th><th>Slot</th><th>Screen</th></tr>
           <%
+          		if(movieDetail != null){
           		for(MovieDetail Movie : movieDetail){      
           %>
                 <tr><td>${Movie.title}</td><td>${Movie.slot}</td><td>${Movie.screen}</td></tr>
           <%
+          		}
           		}
           %> 		
             </table>
@@ -298,10 +301,12 @@
                     <th>Slot</th>
                 </tr>
           <%
+          		if(movieDetail != null){
           		for(MovieDetail Movie : movieDetail){      
           %>
                 <tr><td>${Movie.title}</td><td>${100 - Movie.Booked}</td><td>${Movie.slot}</td></tr>
           <%
+          		}
           		}
           %>
             </table>
@@ -311,18 +316,20 @@
     <div class="AlHiddenDv" id="AlHiddenDv3">
         <div class="Screen">
         <table>
-        		<tr><th>Sr.No.</th><th>Movie ID</th><th>Movie Name</th><th>Slot</th><th>Screen No</th>
+        		<tr><th>Sr.No.</th><th>Movie Name</th><th>Slot</th><th>Screen No</th>
         		<th>Genre</th><th>Duration</th><th>Director</th></tr>
         <%
+        		if(movieDetail != null){
         		int Sr_No=1;
         		for(MovieDetail Movies:movieDetail)
         		{
         %>
-			<tr><td>${Sr_No}</td><td>${Movies.Mid}</td><td>${Movies.title}</td><td>${Movies.slot}</td><td>${Movies.screen}</td>
+			<%-- <tr><td>${Sr_No}</td><td>${Movies.title}</td><td>${Movies.slot}</td><td>${Movies.screen}</td>
 			<td>${Movies.genere}</td><td>${Movies.duration}</td><td>${Movies.director}</td></tr>
 
-        <%			
+ --%>        <%			
         		Sr_No++;
+        		}
         		}
         %>		
         </table>
@@ -407,8 +414,9 @@
         $('#TogleProfileBtn').click(function(){
             $('#profilspan').toggle()
         })
-    })
+    });
 
+    
     </script>
 </body>
 </html>

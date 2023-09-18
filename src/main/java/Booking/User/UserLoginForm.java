@@ -24,8 +24,8 @@ public class UserLoginForm extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		PrintWriter out=resp.getWriter();
 		resp.setContentType("text/html");
+		PrintWriter out=resp.getWriter();
 		
 		String UserName = req.getParameter("userName");
 		String UserEmail = req.getParameter("userEmail");
@@ -40,6 +40,9 @@ public class UserLoginForm extends HttpServlet
 			PreparedStatement pr=con.prepareStatement("select * from users where (name=? or email=?)and password=?");
 			PreparedStatement ps=con.prepareStatement("select m.id, m.title, m.genere,m.director, m.duration, s.screen,"
 					+ " s.slot, s.booked from movie m inner join shows s on m.id=s.Mid");
+			
+			
+			
 			pr.setString(1, UserName);
 			pr.setString(2, UserEmail);
 			pr.setString(3, UserPass);
