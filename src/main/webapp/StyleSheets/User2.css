@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+
 .AlHiddenDv{
     display: none; 
     height: 100%;
@@ -51,3 +52,4 @@ th,td{
 .BookingForm button:hover{
     transform: scale(1.3);
 }
+

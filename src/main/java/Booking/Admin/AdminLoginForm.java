@@ -42,7 +42,7 @@ public class AdminLoginForm extends HttpServlet
 			
 			if(rs.next())
 			{
-				out.print("<script>alert('You are Successfully Logged')</script");
+				out.print("<script>alert('Welcome "+AdminName+"<br>You are Successfully Logged In')</script");
 				RequestDispatcher rd = req.getRequestDispatcher("/Admin.jsp");
 				HttpSession session = req.getSession();
 				session.setAttribute("AdminName", AdminName);

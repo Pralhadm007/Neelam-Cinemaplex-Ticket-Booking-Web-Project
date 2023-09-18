@@ -2,6 +2,8 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.util.*" %>
+<%@page import="Booking.Connection.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,11 +14,26 @@
 <link type="text/css" rel="stylesheet" href="StyleSheets/User.css">
 <link type="text/css" rel="stylesheet" href="StyleSheets/User2.css">
 </head>
+<style>
+.profilspan{
+			 display:none; 
+			color: aliceblue;
+			font-size: 17px;
+			width: 100%;
+		    height: auto;
+		    position:relative;
+		    bottom:35px;
+		  }
+</style>
+
 <body>
-	<%
+
+<%-- 	<%
 			if(session.getAttribute("UserName")==null)
 				response.sendRedirect("index.jsp");
-	%>
+	%> --%>	
+	<%List<MovieDetail> movieDetail = (List<MovieDetail>)request.getAttribute("Movies");%>
+	
     <div class="NavHead">
         <span class="logo">Neelam Cineplex, Jalna</span>
         <span class="NavBtn">
@@ -41,9 +58,13 @@
     </div>
     <div class="container">
         <div class="SideBar">
-            <span>
-                <button id="showProfileBtn">Profile</button>
+        	<span>
+                <button id="TogleProfileBtn">Profile</button>
             </span>
+        	<span class="profilspan" id="profilspan">
+    		<p>Name : <%= session.getAttribute("UserName") %></p>
+    		<p>Email : <br><%= session.getAttribute("UserEmail") %></p>
+        	</span>
             <span>
                 <button id="showTdBtn">Shows For Today</button>
             </span>
@@ -257,7 +278,13 @@
                <h2>All Movies Detail</h2>
             <table>
                 <tr><th>Movie Title</th><th>Slot</th><th>Screen</th></tr>
-                  		
+          <%
+          		for(MovieDetail Movie : movieDetail){      
+          %>
+                <tr><td>${Movie.title}</td><td>${Movie.slot}</td><td>${Movie.screen}</td></tr>
+          <%
+          		}
+          %> 		
             </table>
             <button id="hideTOshwBtn">Back</button>
         </div>
@@ -270,26 +297,36 @@
                     <th>Available Seats</th>
                     <th>Slot</th>
                 </tr>
-                
+          <%
+          		for(MovieDetail Movie : movieDetail){      
+          %>
+                <tr><td>${Movie.title}</td><td>${100 - Movie.Booked}</td><td>${Movie.slot}</td></tr>
+          <%
+          		}
+          %>
             </table>
             <button id="hideAvlstBtn">Back</button>
         </div>
     </div>
-    <div class="profilDIv" id="profilDIv">
-    		<h2>Customer Name : <%= session.getAttribute("UserName") %></h2>
-    		<h2>Customer Email : <%= session.getAttribute("UserEmail") %></h2>
-    </div>
     <div class="AlHiddenDv" id="AlHiddenDv3">
         <div class="Screen">
-            <table>
-                <tr>
-                    <th>Screen No.</th>
-                    <th>Slot</th>
-                    <th>Movie Title</th>
-                </tr>
-                
-            </table>
-            <button id="hideScreenTb">Back</button>
+        <table>
+        		<tr><th>Sr.No.</th><th>Movie ID</th><th>Movie Name</th><th>Slot</th><th>Screen No</th>
+        		<th>Genre</th><th>Duration</th><th>Director</th></tr>
+        <%
+        		int Sr_No=1;
+        		for(MovieDetail Movies:movieDetail)
+        		{
+        %>
+			<tr><td>${Sr_No}</td><td>${Movies.Mid}</td><td>${Movies.title}</td><td>${Movies.slot}</td><td>${Movies.screen}</td>
+			<td>${Movies.genere}</td><td>${Movies.duration}</td><td>${Movies.director}</td></tr>
+
+        <%			
+        		Sr_No++;
+        		}
+        %>		
+        </table>
+	            <button id="hideScreenTb">Back</button>
         </div>
     </div>
     <div class="AlHiddenDv" id="AlHiddenDv4">
@@ -364,5 +401,14 @@
     </div>
     <script src="scripts/User.js"></script>
     <script src="scripts/User2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#TogleProfileBtn').click(function(){
+            $('#profilspan').toggle()
+        })
+    })
+
+    </script>
 </body>
 </html>
