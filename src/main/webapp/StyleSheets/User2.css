@@ -14,16 +14,14 @@
 color: aliceblue;
 margin: 15% 10%;
 background-color: black;
+	padding:50px;
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-}
-th,td{
-    border: 2px solid whitesmoke;
-    height: 40px;
-    width: 100px;
-}
+
 .BookingForm{
     display: flex;
     align-items: center;
@@ -36,20 +34,21 @@ th,td{
 
 }
 .BookingForm table,td{
-    border: none;
     width: 100%;
-    /* text-align: left; */
+    border: none;
+    
 }
 .BookingForm select{
     width:200px;
     height:20px;
     border-radius: 5px;
 }
-.BookingForm input,button{
+.BookingForm .hiddenTable input,button{
     border-radius: 5px;
     margin: 10px;
 }
-.BookingForm button:hover{
+.BookingForm .hiddenTable button:hover{
     transform: scale(1.3);
+    cursor: pointer;
 }
 

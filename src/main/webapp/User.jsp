@@ -24,6 +24,19 @@
 		    position:relative;
 		    bottom:35px;
 		  }
+.hiddenTable{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: black;
+    
+}
+.hiddenTable th,td{
+    border: 2px solid whitesmoke;
+    height: 40px;
+    width: auto;
+}
+
 </style>
 
 <body>
@@ -277,15 +290,16 @@
     <div class="AlHiddenDv" id="AlHiddenDv1">
         <div class="TodayShow">
                <h2>All Movies Detail</h2>
-            <table>
+            <table class="hiddenTable">
                 <tr><th>Movie Title</th><th>Slot</th><th>Screen</th></tr>
           <%
           		if(movieDetail != null){
           		for(MovieDetail Movie : movieDetail){      
           %>
-                <tr><td>${Movie.title}</td><td>${Movie.slot}</td><td>${Movie.screen}</td></tr>
-          <%
-          		}
+                
+                <tr><td><%= Movie.getTitle() %></td><td><%= Movie.getSlot() %></td><td><%= Movie.getScreen() %></td></tr>
+          <%	
+          		}	
           		}
           %> 		
             </table>
@@ -294,7 +308,7 @@
     </div>
     <div class="AlHiddenDv" id="AlHiddenDv2">
         <div class="AvlSeat">
-            <table>
+            <table class="hiddenTable">
                 <tr>
                     <th>Movie Title</th>
                     <th>Available Seats</th>
@@ -302,9 +316,10 @@
                 </tr>
           <%
           		if(movieDetail != null){
-          		for(MovieDetail Movie : movieDetail){      
+          		for(MovieDetail Movie : movieDetail){
+          			int avlseat= 100 -  Movie.getBooked();
           %>
-                <tr><td>${Movie.title}</td><td>${100 - Movie.Booked}</td><td>${Movie.slot}</td></tr>
+                <tr><td><%= Movie.getTitle() %></td><td><%= avlseat %></td><td><%= Movie.getSlot() %></td></tr>
           <%
           		}
           		}
@@ -315,19 +330,19 @@
     </div>
     <div class="AlHiddenDv" id="AlHiddenDv3">
         <div class="Screen">
-        <table>
+        <table class="hiddenTable">
         		<tr><th>Sr.No.</th><th>Movie Name</th><th>Slot</th><th>Screen No</th>
         		<th>Genre</th><th>Duration</th><th>Director</th></tr>
         <%
         		if(movieDetail != null){
         		int Sr_No=1;
-        		for(MovieDetail Movies:movieDetail)
+        		for(MovieDetail Movie : movieDetail)
         		{
         %>
-			<%-- <tr><td>${Sr_No}</td><td>${Movies.title}</td><td>${Movies.slot}</td><td>${Movies.screen}</td>
-			<td>${Movies.genere}</td><td>${Movies.duration}</td><td>${Movies.director}</td></tr>
+			 <tr><td><%= Sr_No %></td><td><%= Movie.getTitle() %></td><td><%= Movie.getSlot() %></td><td><%= Movie.getScreen() %></td>
+			<td><%= Movie.getGenere() %></td><td><%= Movie.getDuration() %> Min.</td><td><%= Movie.getDirector() %></td></tr>
 
- --%>        <%			
+         <%			
         		Sr_No++;
         		}
         		}
@@ -340,7 +355,7 @@
         <div class="BookingForm" id="BookingForm">
             <form>
                 <h1>Booking Form</h1>
-                <table>
+                <table class="BookingTable">
                     <tr>
                         <td>
                             <label>Select Movie : </label>
@@ -407,7 +422,6 @@
         </div>
     </div>
     <script src="scripts/User.js"></script>
-    <script src="scripts/User2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
