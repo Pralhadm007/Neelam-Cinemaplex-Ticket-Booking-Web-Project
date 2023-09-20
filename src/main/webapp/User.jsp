@@ -361,23 +361,34 @@
                             <label>Select Movie : </label>
                         </td>
                         <td>
-                            <select>
-                                <option value="0">--Select Your Movie--</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                                <option value=""></option>
-                                <option value=""></option>
+                            <select name="bkMovieTitle">
+                            <option>---Select Your Movie--</option>
+                 <%   if(movieDetail != null){
+                      for(MovieDetail Movie : movieDetail){ 
+                  %>
+                                <option><%= Movie.getTitle() %></option>
+                  <%			}
+                       		} 
+                  %>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <label>Select Movie Slot : </label>
+                     	<td>
+                           <label>Select Movie Slot : </label>
                         </td>
                         <td>
-                            <select>
-                                <option value="0">--Select Slot--</option>
-                            </select>
+                        <select>
+                        <option>---Select Movie Slot--</option>
+                   <%   if(movieDetail != null){
+                      	for(MovieDetail Movie : movieDetail){ 
+                      		
+                   %>
+                       <option><%= Movie.getSlot() %></option>
+                  <%	}
+                    	} 
+                  %>
+                   </select>
                         </td>
                     </tr>
                     <tr>
@@ -385,9 +396,17 @@
                             <label>Select Screen : </label>
                         </td>
                         <td>
-                            <select>
-                                <option value="0">--Select Screen--</option>
-                            </select>
+                        <select>
+                        <option>---Select Screen No--</option>
+                   <%   if(movieDetail != null){
+                      	for(MovieDetail Movie : movieDetail){ 
+                      		
+                   %>
+                       <option><%= Movie.getScreen() %></option>
+                   <%	}
+                    	} 
+                   %>	
+                   </select>
                         </td>
                     </tr>
                     <tr>
@@ -395,12 +414,9 @@
                             <label>Select Ticket category : </label>
                         </td>
                         <td>
-                            <select>
-                                <option value="0">--Select--</option>
-                                <option value="Diamond">Diamond</option>
-                                <option value="Gold">Gold</option>
-                                <option value="Silver">Silver</option>
-                            </select>
+                            <input name="TicketCht" type="radio" value="D" checked>Diamond
+                            <input name="TicketCht" type="radio" value="G">Gold
+                            <input type="radio" name="TicketCht" value="S">Silver
                         </td>
                     </tr>
                     <tr>

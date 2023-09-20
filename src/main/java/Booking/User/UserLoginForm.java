@@ -70,7 +70,7 @@ public class UserLoginForm extends HttpServlet
 				}
 				req.setAttribute("Movies",Movies);
 				
-				out.print("<script>alert('Welcome "+UserName+"<br>Your are Successfully Logged In')</script>");
+				out.print("<script>alert('Welcome "+UserName+" <br> You are Successfully Logged In')</script>");
 				RequestDispatcher rd = req.getRequestDispatcher("/User.jsp");
 
 				session.setAttribute("UserName", UserName);
