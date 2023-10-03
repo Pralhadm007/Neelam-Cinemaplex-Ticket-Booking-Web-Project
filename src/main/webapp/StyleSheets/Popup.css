@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+.BigDiv{
+	background-color: transparent;
+    display: block;
+	}
+	.BookingForm{
+		background-color:white;
+		font-size:25px;
+		color:green;
+	}
+	img{
+		height:200px;
+		width:200px;
+	}
+	i,b{
+	color: Green;
+	font-size:30px;
+
+	}
+	.Endline{
+		font-size: 20px;
+	}
+    .ButtonDiv{
+        display: flex;
+        flex-direction: row;
+    }
+    button{
+        border-color: green;
+        height: 25px;
+        width: auto;
+    }

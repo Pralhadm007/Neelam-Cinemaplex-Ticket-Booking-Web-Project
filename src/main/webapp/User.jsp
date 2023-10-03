@@ -36,13 +36,17 @@
     height: 40px;
     width: auto;
 }
+.NavBtn{
+	display: flex;
+	flex-direction: row;
+}
 
 </style>
 
 <body>
 
  	<%
-			if(session.getAttribute("UserName")==null)
+			if(session.getAttribute("UserName")==null && session.getAttribute("UserEmail")==null)
 				response.sendRedirect("index.jsp");
 		
 	List<MovieDetail> movieDetail = (List<MovieDetail>)request.getAttribute("Movies");
@@ -58,15 +62,6 @@
             <form action="UserLogOUt" method="post">
                 <button>Log-Out</button>
             </form>
-            </span>
-            <span>
-                <button>About Us</button>
-            </span>
-            <span>
-                <button>Location</button>
-            </span>
-            <span>
-                <button>Contact</button>
             </span>
         </span>
     </div>
@@ -86,7 +81,7 @@
                 <button id="showAvlstBtn">Available Seats</button>
             </span>
             <span>
-                <button id="showScreenBtn">Screens</button>
+                <button id="showScreenBtn">Movie Detail</button>
             </span>
             <span>
                 <button id="showBookFormBtn">Book your Movie</button>
@@ -353,7 +348,7 @@
     </div>
     <div class="AlHiddenDv" id="AlHiddenDv4">
         <div class="BookingForm" id="BookingForm">
-            <form>
+            <form action="TicketBooking" method="post">
                 <h1>Booking Form</h1>
                 <table class="BookingTable">
                     <tr>
@@ -361,7 +356,7 @@
                             <label>Select Movie : </label>
                         </td>
                         <td>
-                            <select name="bkMovieTitle">
+                            <select name="bkMovieTitle" id="bkMovieTitle">
                             <option>---Select Your Movie--</option>
                  <%   if(movieDetail != null){
                       for(MovieDetail Movie : movieDetail){ 
@@ -378,17 +373,10 @@
                            <label>Select Movie Slot : </label>
                         </td>
                         <td>
-                        <select>
-                        <option>---Select Movie Slot--</option>
-                   <%   if(movieDetail != null){
-                      	for(MovieDetail Movie : movieDetail){ 
-                      		
-                   %>
-                       <option><%= Movie.getSlot() %></option>
-                  <%	}
-                    	} 
-                  %>
-                   </select>
+                       	    <input name="bkMovieSlot" type="radio" value=1 required>11 AM - 2 PM
+                            <input name="bkMovieSlot" type="radio" value=2 required>2 PM - 5 PM
+                           <br> <input name="bkMovieSlot" type="radio" value=3 required>5 PM - 8 PM
+                            <input name="bkMovieSlot" type="radio" value=4 required>8 PM - 11 PM
                         </td>
                     </tr>
                     <tr>
@@ -396,17 +384,9 @@
                             <label>Select Screen : </label>
                         </td>
                         <td>
-                        <select>
-                        <option>---Select Screen No--</option>
-                   <%   if(movieDetail != null){
-                      	for(MovieDetail Movie : movieDetail){ 
-                      		
-                   %>
-                       <option><%= Movie.getScreen() %></option>
-                   <%	}
-                    	} 
-                   %>	
-                   </select>
+                        	<input name="bkMovieScreen" type="radio" required>1
+                            <input name="bkMovieScreen" type="radio" required>2
+                            <input name="bkMovieScreen" type="radio" required>3
                         </td>
                     </tr>
                     <tr>
@@ -414,9 +394,9 @@
                             <label>Select Ticket category : </label>
                         </td>
                         <td>
-                            <input name="TicketCht" type="radio" value="D" checked>Diamond
-                            <input name="TicketCht" type="radio" value="G">Gold
-                            <input type="radio" name="TicketCht" value="S">Silver
+                            <input name="TicketCht" type="radio" value="D" checked>Diamond(350)
+                            <input name="TicketCht" type="radio" value="G">Gold(250)<br>
+                            <input type="radio" name="TicketCht" value="S">Silver(150)
                         </td>
                     </tr>
                     <tr>
@@ -424,7 +404,7 @@
                             <label>Enter Number of Seats:</label>
                         </td>
                         <td>
-                            <input type="number" min="1" max="10" required>
+                            <input type="number" min="1" max="10"  name="bkMovieTkNo" required>
                         </td>
                     </tr>
                     <tr>

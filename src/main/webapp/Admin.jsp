@@ -101,9 +101,9 @@
                 <div class="AddMovieForm" id="AddShowForm">
                     <form action="SchShowsForm" method="post">
                         <h2>Schedule Movies</h2>
-                    <input type="number" name="M_ID" placeholder="Enter Movie ID" required>
-                    <input type="number" name="Screen_NO" placeholder="Enter Screen Number" required>
-                    <input type="number" name="Slot_NO" placeholder="Enter Slot Number" required> 
+                    <input type="number" name="M_ID" placeholder="Enter Movie ID" required >
+                    <input type="number" name="Screen_NO" placeholder="Enter Screen Number" min="1" max="2" required>
+                    <input type="number" name="Slot_NO" placeholder="Enter Slot Number" min="1" max="5" required> 
                     <button type="submit">Submit</button>
                     <button type="reset" id="HidShweBtn">Clear</button>
                     </form>
